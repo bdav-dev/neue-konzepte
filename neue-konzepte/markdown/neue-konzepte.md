@@ -21,6 +21,39 @@ Der Textteil der vorliegenden Arbeit - beginnend mit der Einleitung bis ausschli
 # Kurzfassung
 TODO
 
+# Infrastruktur
+
+## Anfrage Struktur
+Die PuduTech Open Platform für Roboterservices implementiert eine  Software-Infrastruktur, die auf einem Microservice-SDK-Modell basiert. Diese Architektur ermöglicht eine nahtlose Integration von Robotersystemen in bestehende Software-Ökosysteme durch standardisierte Kommunikationsprotokolle.
+
+Das System folgt einem Client-Server-Modell, bei dem der Microservice-SDK-Server, welcher auf Betriebssystemen wie Linux, MacOS und Windows nutzbar ist, als Vermittler zwischen Entwickleranwendungen und der Pudu Cloud fungiert. Die Kommunikation basiert auf dem HTTP-Protokoll mit GET- und POST-Methoden für den Datenaustausch. 
+
+<p align="middle">
+    <img src="images/infrastruktur.jpg" width="600"/>
+</p>
+<p align="middle">Infrastruktur der API-Schnittstelle</p>
+
+Um die Pudu-Roboter via API zu steuern, muss der Entwickler zunächst den Microservice-SDK bereitstellen und starten. Bei der ersten Nutzung des MicroService muss eine DeviceID und ein Passwort angegeben werden, um sich zu authorisieren. Außerdem muss die API-Funktion auf jedem Roboter in den Zugriffseinstellungen freigeschaltet werden. <p>
+Nun können Anfragen an den MircoService, beispielsweise per Postman, geschickt werden. Der MicroService leitet diese Anfrage dann weiter an die Pudu-Cloud, welche dann die Befehele den Robotern direkt übergibt. In den meisten Anfragen muss die DeviceID und spezifische RoboterID mitgegeben werden. 
+Hat diese Übermittlung funktioniert, erhält das Endgerät mit der die Anfrage an den MicroService gestellt wurde eine "Success"-Benachrichtigung.<p>
+
+Für die Ansteuerung einzelner Module gibt es verschiedene IDs:
+- DeviceID: Die DeviceID identifiziert den Store, also in dem Fall alle Roboter und deren zugewiesene Gruppe im Labor der DHBW
+- GroupID: Die GroupID ermöglicht es verschiedene Roboter Gruppen anzusteuern. Die Gruppierung der Roboter ist im Pudu-Cloud Management Tool zu steuern, worauf folgend eingegangen wird.
+- RobotID: Die RobotID ist zur spezifischen Antsteuerung bestimmter Roboter zu verwenden. 
+
+## Pudu-Cloud Management Tool
+
+Das Pudu-Cloud Management Tool ist eine Weboberfläche zur allgemeinen Einsicht des eigenen Stores, also der eignen Infratruktur der Roboter als Netzwerk . Für den Zugriff darauf benötigt man einen Account, welcher uns von TCO-Robotics bereit gestellt wurde. Dieses Unternehmen gilt als Vermittler zwischen dem Kunden, der die Roboter anschafft und Pudu-Robotics. <p>
+In dem Pudu-Cloud Management Tool gibt es eine Übersicht über die Roboter im Store (DeviceID), Statistiken zur Nutzung dieser und spezifische Einstellung zur Advertisement-Screen Anzeige, Roboterstimme und Anzeige für Kunden auf dem Controlpanel oben am Pudu. Genannte Anzeige ermöglicht die Dartstellung spezieller Angebote auf dem Screen oder der Funktion den Kunden an einen Tisch zu führen.
+
+<p align="middle">
+    <img src="images/pudu-management.jpg" width="600"/>
+</p>
+<p align="middle">Infrastruktur der API-Schnittstelle</p>
+
+## 
+
 # Karten
 ## Allgemeine Informationen
 Eine Karte, wie sie in einem Pudu Kettybot gespeichert ist, ist eine digitale Repräsentation der Umgebung, die der Roboter für Navigation nutzt. Karten enthalten Wegpunkte und andere Knoten.
