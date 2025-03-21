@@ -23,7 +23,14 @@ TODO
 
 # Infrastruktur
 
-## Anfrage Struktur
+## Pudu Roboter
+
+Der Pudu KettyBot ist ein intelligenter Servierroboter des Unternehmens Pudu Robotics, der speziell für den Einsatz in Restaurants, Hotels und anderen Servicebereichen entwickelt wurde. Mit seinem schlanken Design und einem großen 19,5-Zoll-Display an der Vorderseite kann er nicht nur Speisen servieren, sondern auch zur Kundeninteraktion und Werbung genutzt werden. Die Navigation des Roboters wird über Lidar-Sensoren, 3D-Kameras und SLAM-Technologie (Kombination verschiedener Messmetriken wie LiDAR etc.) realisiert, sodass er sicher durch Umgebungen navigieren kann. Der KettyBot kann Hindernisse in Echtzeit erfassen und  seine Route entsprechend anpassen. <p>
+
+Der Roboter verfügt über mehrere Tabletts, die sich auf der Rückseite des Roboters befinden, um eine Gesamtlast von bis zu 30 kg transportieren zu können. Darüber hinaus bietet er eine interaktive Sprachausgabe, mit der er Gäste begrüßen und sogar Anweisungen entgegennehmen kann.<p>
+
+
+## Anfrage Struktur und Inbetriebnahme 
 Die PuduTech Open Platform für Roboterservices implementiert eine  Software-Infrastruktur, die auf einem Microservice-SDK-Modell basiert. Diese Architektur ermöglicht eine nahtlose Integration von Robotersystemen in bestehende Software-Ökosysteme durch standardisierte Kommunikationsprotokolle.
 
 Das System folgt einem Client-Server-Modell, bei dem der Microservice-SDK-Server, welcher auf Betriebssystemen wie Linux, MacOS und Windows nutzbar ist, als Vermittler zwischen Entwickleranwendungen und der Pudu Cloud fungiert. Die Kommunikation basiert auf dem HTTP-Protokoll mit GET- und POST-Methoden für den Datenaustausch. 
@@ -31,9 +38,9 @@ Das System folgt einem Client-Server-Modell, bei dem der Microservice-SDK-Server
 <p align="middle">
     <img src="images/infrastruktur.jpg" width="600"/>
 </p>
-<p align="middle">Infrastruktur der API-Schnittstelle</p>
+<p align="middle">Diagramm der API-Schnittstellen Infrastruktur</p>
 
-Um die Pudu-Roboter via API zu steuern, muss der Entwickler zunächst den Microservice-SDK bereitstellen und starten. Bei der ersten Nutzung des MicroService muss eine DeviceID und ein Passwort angegeben werden, um sich zu authorisieren. Außerdem muss die API-Funktion auf jedem Roboter in den Zugriffseinstellungen freigeschaltet werden. <p>
+Um die Pudu-Roboter via API zu steuern, muss der Entwickler zunächst den Microservice-SDK bereitstellen und starten. Bei der ersten Nutzung des MicroService muss eine DeviceID und ein Passwort angegeben werden, um sich zu authorisieren. Außerdem muss die API-Funktion auf jedem Roboter in den Zugriffseinstellungen freigeschaltet werden. Der Server sendet standarmäßig über Port 9050.<p>
 Nun können Anfragen an den MircoService, beispielsweise per Postman, geschickt werden. Der MicroService leitet diese Anfrage dann weiter an die Pudu-Cloud, welche dann die Befehele den Robotern direkt übergibt. In den meisten Anfragen muss die DeviceID und spezifische RoboterID mitgegeben werden. 
 Hat diese Übermittlung funktioniert, erhält das Endgerät mit der die Anfrage an den MicroService gestellt wurde eine "Success"-Benachrichtigung.<p>
 
@@ -50,7 +57,13 @@ In dem Pudu-Cloud Management Tool gibt es eine Übersicht über die Roboter im S
 <p align="middle">
     <img src="images/pudu-management.jpg" width="600"/>
 </p>
-<p align="middle">Infrastruktur der API-Schnittstelle</p>
+<p align="middle">Pudu-Cloud Management Tool</p>
+
+## Marker
+
+Um die Pudu-Roboter verwenden zu können, muss ein Marker an der Decke platziert werden. Dieser sollte nicht höher als 5 Meter an der Decke hängen, da es sonst zu Problemen bei der Erkennung vom Pudu-Roboter führen kann. <p>
+
+Der Marker ist hierbei für die örtliche Kalibrierung des Pudu-Roboters zuständig. 
 
 ## 
 
